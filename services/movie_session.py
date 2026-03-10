@@ -2,7 +2,7 @@ from db.models import MovieSession
 
 
 def create_movie_session(movie_show_time, movie_id: int, cinema_hall_id: int) -> MovieSession:
-    MovieSession.objects.create(show_time=movie_show_time, movie_id=movie_id, cinema_hall_id=cinema_hall_id)
+    return MovieSession.objects.create(show_time=movie_show_time, movie_id=movie_id, cinema_hall_id=cinema_hall_id)
 
 
 def get_movies_sessions(session_date: str=None):
@@ -28,4 +28,4 @@ def update_movie_session(session_id: int, show_time:  str=None,movie_id: int=Non
 
 
 def delete_movie_session_by_id(session_id: int) -> None:
-    MovieSession.objects.filter(id=session_id).delete()
+    MovieSession.objects.get(id=session_id).delete()
